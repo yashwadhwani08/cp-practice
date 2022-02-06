@@ -1,9 +1,4 @@
-vcpkg install boost;
-#include <iostream>
-#include<boost/algorithm/string.hpp>
-
-
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
@@ -11,28 +6,32 @@ int main()
     string s;
     string out;
     cin >> s;
-    cout << "\n";
-    for (int i = 0; i < s.length();)
+    int i = 0;
+    while (i < s.length())
     {
-        if (s[i] == 'W' && s[i + 1] == 'U' && s[i + 2] == 'B')
+        if (i + 2 < s.length() && s[i] == 'W' && s[i + 1] == 'U' && s[i + 2] == 'B')
         {
+            if (out.length() > 0 && out[out.length() - 1] != ' ')
+            {
+                out.push_back(' ');
+            }
+
             i += 3;
         }
         else
         {
             out.push_back(s[i]);
-            if (i + 3 < s.length() && s[i + 1] == 'W' && s[i + 2] == 'U' && s[i + 3] == 'B')
-            {
-                out.push_back(' ');
-                i += 4;
-                continue;
-            }
             i++;
         }
     }
-    string finalString(out);
-    // if (finalString[finalString.length() - 1] = ' ')
-    trim_right(finalString);
-    cout << finalString << "\n";
+    if (out[out.length() - 1] == ' ')
+    {
+        out.pop_back();
+    }
+    for (int i = 0; i < out.length(); i++)
+    {
+        cout << out[i];
+    }
+
     return 0;
 }
